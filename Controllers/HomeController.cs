@@ -12,13 +12,28 @@ namespace FashionChess.Controllers
         private ApplicationDBContext db;
 
 
-
-        public HomeController(ILogger<HomeController> logger)
+        /*public HomeController(ILogger<HomeController> logger)*/
+        public HomeController(ApplicationDBContext context)
         {
-            _logger = logger; // ?
+            /*_logger = logger; // ?*/
 
             db = context;
         }
+
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(User user)
+        {
+            db.Users.Add(user);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult Index()
         {
