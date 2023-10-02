@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace FashionChess.Controllers
 {
@@ -35,6 +35,8 @@ namespace FashionChess.Controllers
         }
 
 
+
+
         public IActionResult Index()
         {
             return View();
@@ -43,6 +45,12 @@ namespace FashionChess.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [Authorize]
+        public IActionResult Authorize()
+        {
+            return Content(User.Identity.Name);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
