@@ -27,6 +27,7 @@
                         </li>
 
                         @{
+                            ViewData["Name"] = User.Identity.Name;
                             if (ViewData["Name"] != null)
                             {
                                 <li class="nav-item">

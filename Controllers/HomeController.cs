@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
+using Microsoft.Data.SqlClient;
 
 namespace FashionChess.Controllers
 {
@@ -20,7 +22,15 @@ namespace FashionChess.Controllers
             db = context;
         }
 
-
+        private String UserName()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                db.Users.Select(u => u.Name);
+                return db.Users.Find(Int32.Parse(User.Identity.Name)).Name;
+            }
+            return null;
+        }
 
         public IActionResult Create()
         {
@@ -39,10 +49,7 @@ namespace FashionChess.Controllers
 
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                ViewData["Name"] = User.Identity.Name;
-            }
+            ViewData["Name"] = UserName();
             return View();
         }
 

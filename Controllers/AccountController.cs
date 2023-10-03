@@ -30,7 +30,7 @@ namespace FashionChess.Controllers
                     (u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
-                    await Authenticate(model.Email); // аутентификация
+                    await Authenticate(user.Id.ToString()); // аутентификация (model.Email)
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -56,7 +56,7 @@ namespace FashionChess.Controllers
                     db.Users.Add(new User { Email = model.Email, Name = model.Name, Password = model.Password });
                     await db.SaveChangesAsync();
 
-                    await Authenticate(model.Email); // аутентификация
+                    await Authenticate(user.Id.ToString()); // аутентификация (model.Email)
 
                     return RedirectToAction("Index", "Home");
                 }
