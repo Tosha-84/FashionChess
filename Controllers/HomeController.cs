@@ -26,6 +26,7 @@ namespace FashionChess.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
@@ -36,9 +37,12 @@ namespace FashionChess.Controllers
 
 
 
-
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewData["Name"] = User.Identity.Name;
+            }
             return View();
         }
 
@@ -50,7 +54,11 @@ namespace FashionChess.Controllers
         [Authorize]
         public IActionResult Authorize()
         {
-            return Content(User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                return Content(User.Identity.Name);
+            }
+            return Content("не аутентифицирован");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

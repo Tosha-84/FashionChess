@@ -26,7 +26,8 @@ namespace FashionChess.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                User user = await db.Users.FirstOrDefaultAsync
+                    (u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(model.Email); // аутентификация
@@ -81,7 +82,7 @@ namespace FashionChess.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
