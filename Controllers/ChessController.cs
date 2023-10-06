@@ -36,7 +36,7 @@ namespace FashionChess.Controllers
                 // {
                 //     for (byte j = 0; j < 8; j++)
                 //     {
-                //         System.Console.Write(board[i, j].color + " ");
+                //         System.Consol    e.Write(board[i, j].color + " ");
                 //     } 
                 //     System.Console.WriteLine();
                 // }
