@@ -5,6 +5,7 @@ namespace FashionChess.Controllers
 {
     public class ChessController : Controller
     {
+        /*_____________________________________________________*/
         public class ChessBoard
         {
             public class Cell
@@ -67,6 +68,8 @@ namespace FashionChess.Controllers
                 System.Console.WriteLine("Moove");
             }
         }
+
+        /*_____________________________________________________*/
 
 
 
