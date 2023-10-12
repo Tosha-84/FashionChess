@@ -56,6 +56,9 @@ namespace FashionChess.Controllers
                     db.Users.Add(new User { Email = model.Email, Name = model.Name, Password = model.Password });
                     await db.SaveChangesAsync();
 
+                    user = await db.Users.FirstOrDefaultAsync
+                    (u => u.Email == model.Email && u.Password == model.Password);
+
                     await Authenticate(user.Id.ToString()); // аутентификация (model.Email)
 
                     return RedirectToAction("Index", "Home");

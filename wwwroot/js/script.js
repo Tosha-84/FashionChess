@@ -1,6 +1,7 @@
 function AddFigure(color, figure, div) {
     let img = document.createElement("img");
-    img.setAttribute("src", "figures/" + color + "-" + figure + ".png");
+    
+    img.setAttribute("src", "../../wwwroot/files/figures/" + color + "-" + figure + ".png");
     img.className = "figure";
     div.appendChild(img);
 }

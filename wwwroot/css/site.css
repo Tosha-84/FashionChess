@@ -16,3 +16,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.board {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    padding-top: 10%;
+}
+
+.w {
+    background: #413f3f;
+}
+
+.b {
+    background: #b1adad;
+}
+
+.figure {
+    height: 60px;
+}
+
+
